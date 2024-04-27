@@ -1,0 +1,1 @@
+$("#items").selectize({ normalize: true });
