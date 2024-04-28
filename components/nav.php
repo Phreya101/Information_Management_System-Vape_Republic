@@ -3,7 +3,7 @@
         <div class="nav-item btn-group">
             <button class="btn btn-dark " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <a class="navbar-brand" href="#">
-                    <img src="https://img.freepik.com/free-vector/letter-s-box-logo-design-template_474888-3345.jpg?w=740&t=st=1714162382~exp=1714162982~hmac=91b68d11f78f294af18459ac053613330ad4b0ad0da097995d880fa4ca22a5bf" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+                    <img src="img/logo.jpg" alt="Logo" width="70" height="70" class="d-inline-block align-text-top rounded-circle">
                 </a>
             </button>
             <ul class="dropdown-menu dropdown-menu-start ">

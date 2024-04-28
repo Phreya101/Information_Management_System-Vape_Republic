@@ -1,10 +1,8 @@
 </body>
 <?php
-include("js/DailyChart.php");
-include("js/WeeklyChart.php");
-
+include("modals/MainModals.php");
 ?>
-<script src="js/selectize.js"></script>
-
+<script src="js/datatable.js"></script>
+<script src="js/sweetAlert.js"></script>
 
 </html>

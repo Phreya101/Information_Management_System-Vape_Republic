@@ -14,6 +14,9 @@ switch ($_GET['path']) {
     case 'Dashboard':
         include('includes/home.php');
         break;
+    case 'Stock Management':
+        include('includes/stocks.php');
+        break;
     default:
         include('includes/home.php');
 }

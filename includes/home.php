@@ -5,18 +5,18 @@
             <div class="card text-center">
                 <div class="card-header">
                     <span class="h3">
-                        <i class="fa-solid fa-money-bill-trend-up"></i> Sales
+                        <i class="fa-solid fa-money-bill-trend-up text-primary me-3"></i> Sales
                     </span>
                     <ul class="nav nav-pills card-header-pills">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Add Transaction</button>
+                            <button type="button" class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addTransaction"><i class="fa-solid fa-plus"></i> Add Transaction</button>
                         </li>
                     </ul>
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive-lg overflow-y-scroll" style="width:100%; height:510px;">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="sales">
                             <thead>
                                 <tr>
                                     <th scope=" col">#</th>
@@ -292,7 +292,7 @@
             <div class="d-flex flex-column">
                 <div class="card mb-4">
                     <div class="h3 card-header text-center">
-                        <i class="fa-solid fa-chart-line"></i> Daily Income
+                        <i class="fa-solid fa-chart-line text-primary me-3"></i> Daily Income
                     </div>
                     <div class="card-body">
                         <canvas class="rounded" style="width:100%; height: 200px; background-color:white; " id="DailyChart">
@@ -302,7 +302,7 @@
 
                 <div class="card mt-4">
                     <div class="h3 card-header text-center">
-                        <i class="fa-solid fa-chart-line"></i> Weekly Income
+                        <i class="fa-solid fa-chart-line text-primary me-3"></i> Weekly Income
                     </div>
                     <div class="card-body">
                         <canvas class="rounded" style="width:100%; height: 200px; background-color:white; " id="WeeklyChart">
@@ -313,8 +313,8 @@
             </div>
         </div>
     </div>
+    <?php
+    include("js/DailyChart.php");
+    include("js/WeeklyChart.php");
+    ?>
 </section>
-
-<?php
-include("modals/addTransaction.php");
-?>
