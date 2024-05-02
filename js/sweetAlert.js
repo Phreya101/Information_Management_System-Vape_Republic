@@ -1,3 +1,4 @@
+// delete stock
 $(document).ready(function () {
   // Delete Stock
   $("#deleteStock").click(function () {
@@ -19,8 +20,10 @@ $(document).ready(function () {
       }
     });
   });
+});
 
-  // Clear Log
+// clear log
+$(document).ready(function () {
   $("#clearLog").click(function () {
     Swal.fire({
       title: "Are you sure?",
@@ -29,12 +32,12 @@ $(document).ready(function () {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, clear it!",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your file has been cleared.",
           icon: "success",
         });
       }

@@ -33,7 +33,7 @@
 
     <script>
         $(document).ready(function() {
-            $("#brandName,#productName").selectize({
+            $("#brandName,#productName,#items").selectize({
                 normalize: true
             });
         });
