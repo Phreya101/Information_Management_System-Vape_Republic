@@ -42,4 +42,13 @@
     <title>Vape Republic - <?php echo $_GET['path'] ?></title>
 </head>
 
+<style>
+    section {
+        background-image: url('img/Background.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
 <body class="bg-secondary-subtle">

@@ -1,11 +1,9 @@
 <div class="container-fluid d-lg-flex flex-row">
 
     <div class="rounded container-lg mx-2 my-3 align-items-center">
-        <div class="card text-center">
-            <div class="card-header">
-                <span class="h3">
-                    <i class="fa-solid fa-boxes-packing text-primary me-3"></i> Inventory List
-                </span>
+        <div class="card">
+            <div class="h4 card-header py-2 px-4 text-white bg-secondary">
+                <i class="fa-solid fa-boxes-packing text-dark"></i> Inventory List
             </div>
 
             <div class="card-body">
@@ -43,45 +41,27 @@
     <div class="rounded container-lg mx-2 my-3 align-items-center">
         <div class="d-flex flex-column">
             <div class="card mb-4">
-                <div class="h3 card-header text-center">
-                    <i class="fa-solid fa-plus me-3 text-primary"></i> Add Stock
+                <div class="h4 card-header py-2 px-4 text-white bg-secondary">
+                    <i class="fa-solid fa-plus text-dark"></i> Add Stock
                 </div>
                 <div class="card-body">
                     <form action="" method="post">
                         <div class="d-lg-flex flex-row">
-                            <div class="form-group mb-2 flex-lg-fill mx-2">
-                                <label for="product_name" class="fw-bold">Select Product</label>
-                                <select name="product_name" id="productName" required>
-                                    <option value=""></option>
-                                    <option value="1">Awesome-Phreya(500)</option>
-                                    <option value="2">Beast</option>
-                                    <option value="3">Compatible</option>
-                                    <option value="4">Thomas Edison</option>
-                                    <option value="5">Nikola</option>
-                                    <option value="6">Selectize</option>
-                                    <option value="7">Javascript</option>
-                                </select>
+                            <div class="form-group flex-fill mb-2w-100 mx-2">
+                                <label for="brand" class="fw-bold">Brand Name</label>
+                                <input type="text" name="brand" id="brand" class="form-control shadow-sm" required>
                             </div>
 
-                            <div class="form-group mb-2 flex-lg-fill mx-2">
-                                <label for="brand_name" class="fw-bold">Select Brand</label>
-                                <select name="brand_name" id="brandName" required>
-                                    <option value=""></option>
-                                    <option value="1">Awesome-Phreya(500)</option>
-                                    <option value="2">Beast</option>
-                                    <option value="3">Compatible</option>
-                                    <option value="4">Thomas Edison</option>
-                                    <option value="5">Nikola</option>
-                                    <option value="6">Selectize</option>
-                                    <option value="7">Javascript</option>
-                                </select>
+                            <div class="form-group mb-2 flex-fill  mx-2">
+                                <label for="product" class="fw-bold">Product Name</label>
+                                <input type="text" name="product" id="product" class="form-control shadow-sm" required>
                             </div>
                         </div>
 
                         <div class="d-lg-flex flex-row mx-2">
                             <div class="form-group mb-2 w-50">
                                 <label for="stock" class="fw-bold">Stock</label>
-                                <input type="text" name="stock" id="stock" class="form-control" required>
+                                <input type="text" name="stock" id="stock" class="form-control shadow-sm" required>
                             </div>
 
                             <div class="form-group mb-2 flex-fill align-self-end">
@@ -93,8 +73,8 @@
             </div>
 
             <div class="card mt-4" style="width:100%; height:314px;">
-                <div class="h3 card-header text-center">
-                    <i class="fa-solid fa-file-pen text-primary"></i> Stock log
+                <div class="h4 card-header py-2 px-4 text-white bg-secondary">
+                    <i class="fa-solid fa-file-pen text-dark"></i> Stock log
                 </div>
                 <div class="card-body  overflow-y-scroll">
                     <div class="d-lg-flex flex-row">
@@ -122,3 +102,6 @@
         </div>
     </div>
 </div>
+<?php
+include("includes/Stocks/Modals/editStock.php");
+?>
