@@ -1,3 +1,30 @@
+// logout
+$(document).ready(function () {
+  // Delete Stock
+  $("#logout").click(function () {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logged me out!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Logged out!",
+          text: "You've been logged out!",
+          icon: "success",
+          showConfirmButton: false,
+        });
+        setTimeout(function () {
+          window.location.href = "login.php"; // Replace "login.php" with your desired URL
+        }, 2000);
+      }
+    });
+  });
+});
+
 // delete stock
 $(document).ready(function () {
   // Delete Stock
@@ -98,7 +125,6 @@ $(document).ready(function () {
 // Return Sale
 
 $(document).ready(function () {
-  // Delete Stock
   $("#returnSale").click(function () {
     Swal.fire({
       title: "Are you sure?",

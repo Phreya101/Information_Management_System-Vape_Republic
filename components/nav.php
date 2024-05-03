@@ -7,8 +7,8 @@
                 </a>
             </button>
             <ul class="dropdown-menu dropdown-menu-start ">
-                <li><a class="dropdown-item" href="#">Change Password</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#change">Change Credentials</button></li>
+                <li><button class="dropdown-item" id="logout">Logout</button></li>
             </ul>
         </div>
 
@@ -40,3 +40,7 @@
     </div>
 
 </nav>
+
+<?php
+include('components/modals/change.php');
+?>

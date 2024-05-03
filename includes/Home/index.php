@@ -1,9 +1,10 @@
 <div class="container-fluid d-lg-flex flex-row">
 
     <div class="rounded container-lg mx-2 my-3 align-items-center">
-        <div class="card mb-4">
+
+        <div class="card">
             <div class="h4 card-header py-2 px-4 text-white bg-secondary">
-                <i class="fa-solid fa-cart-shopping text-dark"></i> Purchases
+                <i class="fa-solid fa-bag-shopping text-dark "></i> Purchases
             </div>
 
             <div class="card-body">
@@ -35,7 +36,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="rounded container-lg mx-2 my-3 align-items-center">

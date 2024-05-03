@@ -8,7 +8,7 @@
 
             <div class="card-body">
                 <div class="table-responsive-lg overflow-y-scroll" style="width:100%; height:510px;">
-                    <table class="table table-hover" class=" text-center" id="inventory">
+                    <table class="table table-hover" class="text-center" id="inventory">
                         <thead>
                             <tr>
                                 <th scope=" col">#</th>
