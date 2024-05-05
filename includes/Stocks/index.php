@@ -7,8 +7,8 @@
             </div>
 
             <div class="card-body">
-                <div class="table-responsive-lg overflow-y-scroll" style="width:100%; height:510px;">
-                    <table class="table table-hover" class="text-center" id="inventory">
+                <div class="table-responsive-lg overflow-y-scroll" id="stockTable" style="width:100%; height:510px;">
+                    <!-- <table class="table table-hover" class="text-center" id="inventory">
                         <thead>
                             <tr>
                                 <th scope=" col">#</th>
@@ -31,7 +31,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>
@@ -45,26 +45,31 @@
                     <i class="fa-solid fa-plus text-dark"></i> Add Stock
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form id="addStock" method="post">
                         <div class="d-lg-flex flex-row">
                             <div class="form-group flex-fill mb-2w-100 mx-2">
                                 <label for="brand" class="fw-bold">Brand Name</label>
-                                <input type="text" name="brand" id="brand" class="form-control shadow-sm" required>
+                                <input type="text" name="brand" id="sBrand" class="form-control shadow-sm" required>
                             </div>
 
                             <div class="form-group mb-2 flex-fill  mx-2">
                                 <label for="product" class="fw-bold">Product Name</label>
-                                <input type="text" name="product" id="product" class="form-control shadow-sm" required>
+                                <input type="text" name="product" id="sProduct" class="form-control shadow-sm" required>
                             </div>
                         </div>
 
                         <div class="d-lg-flex flex-row mx-2">
-                            <div class="form-group mb-2 w-50">
+                            <div class="form-group mb-2">
                                 <label for="stock" class="fw-bold">Stock</label>
-                                <input type="text" name="stock" id="stock" class="form-control shadow-sm" required>
+                                <input type="number" name="stockQty" id="sStock" class="form-control shadow-sm" required>
                             </div>
 
-                            <div class="form-group mb-2 flex-fill align-self-end">
+                            <div class="form-group mb-2 ms-auto">
+                                <label for="stock" class="fw-bold">Price</label>
+                                <input type="number" name="price" id="sPrice" class="form-control shadow-sm" required>
+                            </div>
+
+                            <div class="form-group mb-2 align-self-end ms-auto">
                                 <button type="submit" class="btn btn-primary float-end">Add Stock</button>
                             </div>
                         </div>
@@ -102,6 +107,7 @@
         </div>
     </div>
 </div>
+<script src="includes/Stocks/backend/ajax.js"></script>
 <?php
 include("includes/Stocks/Modals/editStock.php");
 ?>

@@ -11,43 +11,13 @@ $(document).ready(function () {
       confirmButtonText: "Yes, logged me out!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Logged out!",
-          text: "You've been logged out!",
-          icon: "success",
-          showConfirmButton: false,
-        });
-        setTimeout(function () {
-          window.location.href = "login.php"; // Replace "login.php" with your desired URL
-        }, 2000);
+        window.location.href = "auth/logout.php"; // Replace "login.php" with your desired URL
       }
     });
   });
 });
 
 // delete stock
-$(document).ready(function () {
-  // Delete Stock
-  $("#deleteStock").click(function () {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-      }
-    });
-  });
-});
 
 // clear log
 $(document).ready(function () {

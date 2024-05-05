@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (isset($_SESSION["username"])) {
+    header("location: index.php?path=Dashboard");
+}
 include("auth/conn.php");
 date_default_timezone_set("Asia/Manila");
 ?>

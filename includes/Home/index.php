@@ -45,7 +45,7 @@
                     </i> <i class="fa-solid fa-plus text-dark"></i> Add Purchase
                 </div>
                 <div class="card-body">
-                    <form method="post" class="d-flex flex-column bg-transparent">
+                    <form method="post" id="addTransaction" class="d-flex flex-column bg-transparent">
                         <div class="d-lg-flex flex-row">
                             <div class="form-group mb-3 flex-fill mx-2">
                                 <label for="items" class='fw-bold mb-2'>Select Product</label>
@@ -94,6 +94,7 @@
         </div>
     </div>
 </div>
+<script src="includes/Home/backend/ajax.js"></script>
 <?php
 include("js/DailyChart.php");
 ?>

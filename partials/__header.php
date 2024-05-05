@@ -37,8 +37,6 @@ include("auth/conn.php");
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="css/style.css">
-
     <script>
         $(document).ready(function() {
             $("#brandName,#productName,#items").selectize({
