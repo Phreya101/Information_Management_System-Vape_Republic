@@ -1,3 +1,4 @@
+<script src="includes/Stocks/backend/ajax.js"></script>
 <div class="container-fluid d-lg-flex flex-row">
 
     <div class="rounded container-lg mx-2 my-3 align-items-center">
@@ -107,7 +108,7 @@
         </div>
     </div>
 </div>
-<script src="includes/Stocks/backend/ajax.js"></script>
+
 <?php
 include("includes/Stocks/Modals/editStock.php");
 ?>

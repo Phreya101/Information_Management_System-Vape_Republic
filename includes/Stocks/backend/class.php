@@ -19,6 +19,8 @@ class Stock
         $stmt->bind_param("ssss", $brand, $product, $stockQty, $price);
         if ($stmt->execute()) {
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -42,6 +44,33 @@ class Stock
         $stmt->bind_param("i", $id);
         if ($stmt->execute()) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function editStock($id)
+    {
+        $stmt = "SELECT * FROM `stock` WHERE `id` = " . $id;
+        $result = $this->conn->query($stmt);
+        $content = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $content[] = $row;
+            }
+        }
+
+        return $content;
+    }
+
+    public function updateStock($id, $brand, $product, $stockQty, $price)
+    {
+        $stmt = $this->conn->prepare("UPDATE `stock` SET `brand` = ?, `product` = ?, `stock` = ?, `price` = ? WHERE `id` = ?");
+        $stmt->bind_param("ssssi", $brand, $product, $stockQty, $price, $id);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

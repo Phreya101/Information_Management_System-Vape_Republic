@@ -56,123 +56,79 @@ if (isset($_GET['action'])) {
 
                 echo json_encode($response);
             }
-    }
-}
+            break;
+        case "editStock":
+            if ($_SERVER['REQUEST_METHOD'] === "GET") {
+                $id = $_GET["id"];
 
-if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    $list = $stock->stockList();
-    $count = 1;
-    if (!empty($list)) {
-        echo '<table class="table table-hover" class="text-center" id="inventory">';
-        echo '<thead>';
-        echo '<tr>';
-        echo '<th scope=" col">#</th>';
-        echo '<th scope="col">Brand</th>';
-        echo '<th scope="col">Product Name</th>';
-        echo '<th scope="col" class="text-start">Stock</th>';
-        echo '<th scope="col">Price</th>';
-        echo '<th scope="col">Action</th>';
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
-        foreach ($list as $key) {
+                $content = $stock->editStock($id);
+                if (!empty($content)) {
+                    echo '<div class="modal-header">';
+                    echo '<h1 class="modal-title fs-5" id="editStockLabel"><i class="fa-solid fa-pen text-success me-2"></i> Edit Stock</h1>';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>';
+                    echo '<form method="post" id="editForm" class="d-flex flex-column bg-transparent">';
+                    echo '<div class="modal-body">';
+                    foreach ($content as $key) {
+                        echo '<input name="id" type="hidden" value="' . $key['id'] . '">';
+                        echo '<div class="form-group mb-3">';
+                        echo '<label for="brand" class="fw-bold mb-2">Brand</label>';
+                        echo '<input type="text" name="brand" id="brand" value="' . $key['brand'] . '" class="form-control shadow-sm" required>';
+                        echo '</div>';
 
-            echo '<tr>';
-            echo '<th scope="row">' . $count++ . '</th>';
-            echo '<td>' . $key['brand'] . '</td>';
-            echo '<td>' . $key['product'] . '</td>';
-            echo '<td class="text-start">' . $key['stock'] . '</td>';
-            echo '<td> &#8369;' . $key['price'] . '</td>';
-            echo '<td>';
+                        echo '<div class="form-group mb-3">';
+                        echo '<label for="product" class="fw-bold mb-2">Product</label>';
+                        echo '<input type="text" name="product" id="product" value="' . $key['product'] . '" class="form-control shadow-sm" required>';
+                        echo '</div>';
 
-            echo '<button type="button" class="btn btn-success btn-sm rounded" data-bs-toggle="modal" data-bs-target="#editStock"><i class="fa-solid fa-pen"></i></button>';
+                        echo '<div class="from-group mb-3">';
+                        echo '<label for="stock" class="fw-bold mb-2">Stock</label>';
+                        echo '<input class="form-control shadow-sm" value="' . $key['stock'] . '" type="text" name="stockQty" id="stock" required>';
+                        echo '</div>';
 
-            echo '<button type="button" class="btn btn-danger btn-sm rounded mx-2 deleteStock" id="deleteStock" data-id="' . $key['id'] . '"> <i class="fa-solid fa-trash"></i></button>';
-            echo '</td>';
-            echo '</tr>';
-        }
-        echo '</tbody>';
-        echo '</table>';
-    } else {
-        echo '<table class="table table-hover" class="text-center" id="inventory">';
-        echo '<thead>';
-        echo '<tr>';
-        echo '<th scope=" col">#</th>';
-        echo '<th scope="col">Brand</th>';
-        echo '<th scope="col">Product Name</th>';
-        echo '<th scope="col">Stock</th>';
-        echo '<th scope="col">Price</th>';
-        echo '<th scope="col">Action</th>';
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
-        echo '</tbody>';
-        echo '</table>';
-    }
-?>
+                        echo '<div class="from-group mb-3">';
+                        echo '<label for="price" class="fw-bold mb-2">Price</label>';
+                        echo '<input type="text" name="price" id="price" value="' . $key['price'] . '" class="form-control shadow-sm" required>';
+                        echo '</div>';
 
-    <script>
-        new DataTable("#inventory", {
-            layout: {
-                bottomEnd: {
-                    paging: {
-                        boundaryNumbers: false,
-                    },
-                },
-            },
-        });
-
-        $(document).ready(function() {
-            // Delete Stock
-            $(".deleteStock").click(function() {
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        var userId = $(this).data('id');
-                        $.ajax({
-                            type: 'post',
-                            url: 'includes/Stocks/backend/process.php?action=deleteStock',
-                            data: {
-                                id: userId
-                            },
-                            success: function(response) {
-                                var data = JSON.parse(response);
-                                if (data.success) {
-                                    Swal.fire({
-                                        title: "Deleted!",
-                                        text: data.message,
-                                        icon: "success",
-                                        showConfirmButton: false,
-                                        timer: 1500,
-                                    });
-                                    setTimeout(function() {
-                                        window.location = "index.php?path=Stock%20Management";
-                                    }, 1500);
-                                } else {
-                                    Swal.fire({
-                                        title: "Failed!",
-                                        text: data.message,
-                                        icon: "error",
-                                        showConfirmButton: false,
-                                        timer: 1500,
-                                    });
-                                }
-                            }
-                        });
+                        echo '</div>';
+                        echo '<div class="modal-footer">';
+                        echo '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>';
+                        echo '<button type="submit" name="submitEdit" class="btn btn-primary">Save Changes</button>
+                    </div>';
                     }
-                });
-            });
-        });
-    </script>
+                    echo '</form>';
+                }
+            }
+        case 'updateStock':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id = $_POST['id'];
+                $brand = $_POST['brand'];
+                $product = $_POST['product'];
+                $stockQty = $_POST['stockQty'];
+                $price = $_POST['price'];
+
+                if ($brand && $product && $stockQty !== false && $price !== false) {
+
+                    $success = $stock->updateStock($id, $brand, $product, $stockQty, $price);
 
 
-<?php
+                    $response = array();
+
+                    if ($success) {
+                        $response['success'] = true;
+                        $response['message'] = "Stock updated successfully";
+                    } else {
+                        $response['success'] = false;
+                        $response['message'] = "Failed to update stock. Please try again later.";
+                    }
+                } else {
+                    $response['success'] = false;
+                    $response['message'] = "Invalid input. Please check your data and try again.";
+                }
+
+                echo json_encode($response);
+            }
+            break;
+    }
 }
-?>

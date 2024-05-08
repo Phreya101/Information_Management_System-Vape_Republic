@@ -8,6 +8,3 @@ class home
         $this->conn = $conn;
     }
 }
-public function addTransaction($item, ){
-
-}
