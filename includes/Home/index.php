@@ -66,6 +66,4 @@
         </div>
     </div>
 </div>
-<?php
-include("js/DailyChart.php");
-?>
+<script src="js/DailyChart.js"></script>
