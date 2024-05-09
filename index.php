@@ -9,13 +9,10 @@ include('components/nav.php');
             include('includes/Home/index.html');
             break;
         case 'Stock Management':
-            include('includes/Stocks/index.php');
-            break;
-        case 'Brand and Product Management':
-            include('includes/BrandsProducts/index.php');
+            include('includes/Stocks/index.html');
             break;
         default:
-            include('includes/Home/index.php');
+            include('includes/Home/index.html');
     }
     ?>
 </section>
