@@ -88,5 +88,5 @@
 </div>
 
 <?php
-include("includes/Stocks/Modals/editStock.php");
+include("includes/Stocks/Modals/editStock.html");
 ?>
