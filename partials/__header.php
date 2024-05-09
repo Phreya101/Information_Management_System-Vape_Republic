@@ -37,13 +37,6 @@ include("auth/conn.php");
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        $(document).ready(function() {
-            $("#brandName,#productName,#items").selectize({
-                normalize: true
-            });
-        });
-    </script>
 
     <title>Vape Republic - <?php echo $_GET['path'] ?></title>
 </head>

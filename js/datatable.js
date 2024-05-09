@@ -1,14 +1,3 @@
-new DataTable("#sales", {
-  layout: {
-    bottomEnd: {
-      paging: {
-        boundaryNumbers: false,
-      },
-    },
-  },
-  ordering: false,
-});
-
 new DataTable("#brands", {
   layout: {
     bottomEnd: {
