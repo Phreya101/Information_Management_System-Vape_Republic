@@ -9,7 +9,7 @@ include('components/nav.php');
             include('includes/Home/index.html');
             break;
         case 'Stock Management':
-            include('includes/Stocks/index.html');
+            include('includes/Stocks/index.php');
             break;
         default:
             include('includes/Home/index.html');
