@@ -6,7 +6,7 @@ include('components/nav.php');
     <?php
     switch ($_GET['path']) {
         case 'Dashboard':
-            include('includes/Home/index.php');
+            include('includes/Home/index.html');
             break;
         case 'Stock Management':
             include('includes/Stocks/index.php');
