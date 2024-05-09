@@ -9,7 +9,7 @@ if (isset($_GET['action'])) {
         case 'getItems':
             if ($_SERVER['REQUEST_METHOD'] === "GET") {
                 $list = $home->getItem();
-                foreach ($list as $item) {
+                foreach ($list as &$item) {
                     $item['name'] = $item['brand'] . ' - ' . $item['product'];
                 }
                 echo json_encode($list, JSON_UNESCAPED_UNICODE);
@@ -39,7 +39,9 @@ if (isset($_GET['action'])) {
         case "refund":
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $id = $_POST['id'];
-                $success = $home->refund($id);
+                $stock = $_POST['stock'];
+                $price = $_POST['price'];
+                $success = $home->refund($id, $stock, $price);
 
                 $response = array();
 

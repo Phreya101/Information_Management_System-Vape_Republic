@@ -20,8 +20,6 @@ $(document).ready(function () {
           setTimeout(function () {
             window.location = "index.php?path=Stock%20Management";
           }, 1500);
-          $("#addStock")[0].reset();
-          fetchData();
         } else {
           Swal.fire({
             title: "Failed!",

@@ -29,7 +29,7 @@ switch (isset($_GET["action"])) {
                     echo '<td>' . $row['quantity'] . '</td>';
                     echo '<td>₱' . $row['total_price'] . '</td>';
                     echo '<td>';
-                    echo '<button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class="btn btn-secondary btn-sm rounded refund" id="returnSale" data-id="' . $row['sid'] . '"> <i class="fa-solid fa-rotate-left"></i></button>';
+                    echo '<button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class="btn btn-secondary btn-sm rounded refund" id="returnSale" data-id="' . $row['sid'] . '"data-stock="' . $row['id'] . '" data-price="' . $row['total_price'] . '"> <i class="fa-solid fa-rotate-left"></i></button>';
                     echo '</td>';
                     echo '</tr>';
                 }

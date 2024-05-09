@@ -68,6 +68,11 @@ class Stock
         $stmt = $this->conn->prepare("UPDATE `stock` SET `brand` = ?, `product` = ?, `stock` = ?, `price` = ? WHERE `id` = ?");
         $stmt->bind_param("ssssi", $brand, $product, $stockQty, $price, $id);
         if ($stmt->execute()) {
+
+            $add = $this->conn->prepare("INSERT INTO `log`(`action`, `stock_id`) VALUES ('updated stock',?)");
+            $add->bind_param("i", $id);
+            $add->execute();
+
             return true;
         } else {
             return false;

@@ -9,30 +9,7 @@
 
             <div class="card-body">
                 <div class="table-responsive-lg overflow-y-scroll" id="stockTable" style="width:100%; height:510px;">
-                    <!-- <table class="table table-hover" class="text-center" id="inventory">
-                        <thead>
-                            <tr>
-                                <th scope=" col">#</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Brand</th>
-                                <th scope="col">Stock</th>
-                                <th scope='col'>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Black Oxbar</td>
-                                <td>Flava</td>
-                                <td>2</td>
-                                <td>
-                                    <button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class='btn btn-success btn-sm rounded' data-bs-toggle="modal" data-bs-target="#editStock"><i class="fa-solid fa-pen"></i></button>
 
-                                    <button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class='btn btn-danger btn-sm rounded' id="deleteStock"> <i class="fa-solid fa-trash"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table> -->
                 </div>
             </div>
         </div>
@@ -89,16 +66,17 @@
                         <span class="text-sm ms-2 me-4 fst-italic">11:30:26</span>
                         <span class="text-sm ms-0 fst-italic flex-fill me-0 text-lg-center">--------------</span>
                         <span class="text-sm me-2 flex-fill text-lg-end">Brand-Product Name</span>
+                        <hr class="my-0">
                     </div>
-                    <hr class="my-0">
                     <div class="d-lg-flex flex-row">
                         <span class="text-sm">ACTION:</span>
                         <span class="text-sm mx-2 fst-italic">2024-04-29</span>
                         <span class="text-sm ms-2 me-4 fst-italic">11:30:26</span>
                         <span class="text-sm ms-0 fst-italic flex-fill me-0 text-lg-center">--------------</span>
                         <span class="text-sm me-2 flex-fill text-lg-end">Brand-Product Name</span>
+                        <hr class="my-0">
                     </div>
-                    <hr class="my-0">
+
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-danger btn-sm float-end" id="clearLog">Clear Log</button>

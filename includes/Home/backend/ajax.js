@@ -128,11 +128,15 @@ $(document).ready(function () {
       confirmButtonText: "Yes, refund it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        var stock = $(this).data("stock");
         var userId = $(this).data("id");
+        var price = $(this).data("price");
         $.ajax({
           type: "POST",
           url: "includes/Home/backend/process.php?action=refund",
           data: {
+            price: price,
+            stock: stock,
             id: userId,
           },
           success: function (response) {
