@@ -21,5 +21,5 @@ include('components/nav.php');
 </section>
 
 <?php
-include('partials/__footer.php');
+include('partials/__footer.html');
 ?>
