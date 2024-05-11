@@ -15,7 +15,7 @@ class Home
     public function getList()
     {
         $sql = "SELECT `st`.`price`,`st`.`id` as `id`, `s`.`id` as `sid` ,`st`.`brand`,`st`.`price`, `st`.`stock`, `st`.`product`, `s`.`quantity`, `s`.`total_price`, `s`.`status` FROM `sales` `s` INNER JOIN `stock` `st` ON `s`.`stock_id` = `st`.`id` WHERE 
-        DATE(s.created_at) = CURDATE() ORDER BY `s`.`created_at` ASC";
+        DATE(s.created_at) = CURDATE() ORDER BY `s`.`time_created` desc";
         $result = $this->conn->query($sql);
         $list = [];
         if ($result->num_rows > 0) {

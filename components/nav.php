@@ -32,7 +32,7 @@
                 </li> -->
             </ul>
             <span class="navbar-text">
-                VP_IMS Version 1.0
+                VR_IMS Version 1.0
             </span>
 
         </div>

@@ -164,10 +164,7 @@ $(document).ready(function () {
       url: "includes/Home/backend/process.php?action=getChartData",
       success: function (data) {
         try {
-          console.log("Raw data:", data);
           data = JSON.parse(data);
-          console.log("Parsed data:", data);
-
           let labels = [];
           let dataset1Data = [];
 
@@ -175,9 +172,6 @@ $(document).ready(function () {
             labels.push(item.date);
             dataset1Data.push(item.total_income);
           });
-
-          console.log("Labels:", labels);
-          console.log("Dataset1Data:", dataset1Data);
 
           let ctx = document.getElementById("DailyChart").getContext("2d");
           let myLineChart = new Chart(ctx, {
