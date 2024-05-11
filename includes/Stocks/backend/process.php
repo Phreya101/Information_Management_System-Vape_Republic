@@ -8,7 +8,6 @@ if (isset($_GET['action'])) {
     switch ($_GET['action']) {
 
         case 'addStock':
-
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $brand = $_POST['brand'];
                 $product = $_POST['product'];
@@ -40,8 +39,8 @@ if (isset($_GET['action'])) {
         case "deleteStock":
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $id = $_POST['id'];
-
-                $success = $stock->deleteStock($id);
+                $name = $_POST['name'];
+                $success = $stock->deleteStock($id, $name);
 
 
                 $response = array();
@@ -100,6 +99,7 @@ if (isset($_GET['action'])) {
                     echo '</form>';
                 }
             }
+            break;
         case 'updateStock':
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $id = $_POST['id'];

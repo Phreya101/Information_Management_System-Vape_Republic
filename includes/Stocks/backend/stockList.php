@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     $list = $stock->stockList();
     $count = 1;
     if (!empty($list)) {
-        echo '<table class="table table-hover" class="text-center" id="inventory">';
+        echo '<table class="table table-hove text-capitalize" class="text-center" id="inventory">';
         echo '<thead>';
         echo '<tr>';
         echo '<th scope=" col">#</th>';
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
             echo '<button type="button" class="btn btn-success btn-sm rounded editStock" data-id="' . $key['id'] . '"><i class="fa-solid fa-pen"></i></button>';
 
-            echo '<button type="button" class="btn btn-danger btn-sm rounded mx-2 deleteStock" id="deleteStock" data-id="' . $key['id'] . '"> <i class="fa-solid fa-trash"></i></button>';
+            echo '<button type="button" class="btn btn-danger btn-sm rounded mx-2 deleteStock" id="deleteStock" data-id="' . $key['id'] . '" data-name="' . $key['brand'] . '-' . $key['product'] . '"> <i class="fa-solid fa-trash"></i></button>';
             echo '</td>';
             echo '</tr>';
         }

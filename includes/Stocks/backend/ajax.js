@@ -66,10 +66,12 @@ $(document).ready(function () {
     }).then((result) => {
       if (result.isConfirmed) {
         var userId = $(this).data("id");
+        var name = $(this).data("name");
         $.ajax({
           type: "post",
           url: "includes/Stocks/backend/process.php?action=deleteStock",
           data: {
+            name: name,
             id: userId,
           },
           success: function (response) {
@@ -142,7 +144,6 @@ $(document).ready(function () {
             window.location = "index.php?path=Stock%20Management";
           }, 1500);
           $("#addStock")[0].reset();
-          fetchData();
         } else {
           Swal.fire({
             title: "Failed!",
@@ -158,4 +159,20 @@ $(document).ready(function () {
       },
     });
   });
+});
+
+$(document).ready(function () {
+  function fetchLog() {
+    $.ajax({
+      url: "includes/Stocks/backend/log.php",
+      type: "GET",
+      success: function (content) {
+        $("#log").html(content);
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr.responseText);
+      },
+    });
+  }
+  fetchLog();
 });

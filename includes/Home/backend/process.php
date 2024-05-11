@@ -20,8 +20,9 @@ if (isset($_GET['action'])) {
                 $item = $_POST['item'];
                 $qty = $_POST['qty'];
                 $prc = $_POST['prc'];
+                $stock = $_POST['stock'];
 
-                $success = $home->addTransaction($item, $qty, $prc);
+                $success = $home->addTransaction($item, $qty, $prc, $stock);
 
                 $response = array();
 
@@ -47,14 +48,19 @@ if (isset($_GET['action'])) {
 
                 if ($success) {
                     $response['success'] = true;
-                    $response['message'] = "Refunded successfully";
+                    $response['message'] = "Replaced successfully";
                 } else {
                     $response['success'] = false;
-                    $response['message'] = "Failed to refund. Please try again later.";
+                    $response['message'] = "Failed to replace. Please try again later.";
                 }
 
                 echo json_encode($response);
             }
             break;
+        case "getChartData":
+            if ($_SERVER["REQUEST_METHOD"] === "GET") {
+                $data = $home->getChart();
+                echo json_encode($data);
+            }
     }
 }

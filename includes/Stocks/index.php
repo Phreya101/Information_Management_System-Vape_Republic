@@ -59,23 +59,7 @@
                 <div class="h4 card-header py-2 px-4 text-white bg-secondary">
                     <i class="fa-solid fa-file-pen text-dark"></i> Stock log
                 </div>
-                <div class="card-body  overflow-y-scroll">
-                    <div class="d-lg-flex flex-row">
-                        <span class="text-sm">ACTION:</span>
-                        <span class="text-sm mx-2 fst-italic">2024-04-29</span>
-                        <span class="text-sm ms-2 me-4 fst-italic">11:30:26</span>
-                        <span class="text-sm ms-0 fst-italic flex-fill me-0 text-lg-center">--------------</span>
-                        <span class="text-sm me-2 flex-fill text-lg-end">Brand-Product Name</span>
-                        <hr class="my-0">
-                    </div>
-                    <div class="d-lg-flex flex-row">
-                        <span class="text-sm">ACTION:</span>
-                        <span class="text-sm mx-2 fst-italic">2024-04-29</span>
-                        <span class="text-sm ms-2 me-4 fst-italic">11:30:26</span>
-                        <span class="text-sm ms-0 fst-italic flex-fill me-0 text-lg-center">--------------</span>
-                        <span class="text-sm me-2 flex-fill text-lg-end">Brand-Product Name</span>
-                        <hr class="my-0">
-                    </div>
+                <div class="card-body  overflow-y-scroll" id="log">
 
                 </div>
                 <div class="card-footer">

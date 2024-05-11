@@ -56,26 +56,12 @@ $(document).ready(function () {
         create: false,
         onChange: function (value) {
           var selectedItem = this.options[value];
+          $("#prc").val(selectedItem.price);
           $("#price").val(selectedItem.price);
+          $("#stock").val(selectedItem.stock);
         },
       });
     },
-  });
-
-  $(document).ready(function () {
-    function getTotal() {
-      var qty = parseFloat($("#qty").val());
-      var price = parseFloat($("#price").val());
-
-      if (!isNaN(qty) && !isNaN(price)) {
-        var total = qty * price;
-        $("#prc").val(total.toFixed(2));
-      } else {
-        $("#prc").val("");
-      }
-    }
-    getTotal();
-    $("#qty, #price").on("input", getTotal);
   });
 
   $("#addTransaction").submit(function (e) {
@@ -125,12 +111,12 @@ $(document).ready(function () {
       showCancelButton: true,
       confirmButtonColor: "#6c757d",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, refund it!",
+      confirmButtonText: "Yes, replace it!",
     }).then((result) => {
       if (result.isConfirmed) {
         var stock = $(this).data("stock");
         var userId = $(this).data("id");
-        var price = $(this).data("price");
+        var price = $(this).data("qty");
         $.ajax({
           type: "POST",
           url: "includes/Home/backend/process.php?action=refund",
@@ -143,7 +129,7 @@ $(document).ready(function () {
             var data = JSON.parse(response);
             if (data.success) {
               Swal.fire({
-                title: "refunded!",
+                title: "Replaced!",
                 text: data.message,
                 icon: "success",
                 showConfirmButton: false,
@@ -169,4 +155,58 @@ $(document).ready(function () {
       }
     });
   });
+});
+
+$(document).ready(function () {
+  function getChart() {
+    $.ajax({
+      type: "get",
+      url: "includes/Home/backend/process.php?action=getChartData",
+      success: function (data) {
+        try {
+          console.log("Raw data:", data);
+          data = JSON.parse(data);
+          console.log("Parsed data:", data);
+
+          let labels = [];
+          let dataset1Data = [];
+
+          data.forEach(function (item) {
+            labels.push(item.date);
+            dataset1Data.push(item.total_income);
+          });
+
+          console.log("Labels:", labels);
+          console.log("Dataset1Data:", dataset1Data);
+
+          let ctx = document.getElementById("DailyChart").getContext("2d");
+          let myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: "Daily Income",
+                  data: dataset1Data,
+                  borderColor: "blue",
+                  borderWidth: 2,
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      },
+      error: function (xhr, status, error) {
+        // Handle error
+        console.error("AJAX error:", error);
+      },
+    });
+  }
+  getChart();
 });
