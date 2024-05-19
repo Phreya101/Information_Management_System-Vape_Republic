@@ -14,54 +14,106 @@ $(document).ready(function () {
 $(document).ready(function () {
   $.ajax({
     type: "GET",
-    url: "includes/Home/backend/process.php?action=getItems",
-    success: function (list) {
-      var list = JSON.parse(list);
-      $("#items").selectize({
+    url: "includes/Home/backend/process.php?action=getBranch",
+    success: function (branch) {
+      var list = JSON.parse(branch);
+      $("#branch").selectize({
         maxItems: 1,
         valueField: "id",
-        labelField: "product",
-        searchField: "name",
+        labelField: "branch_name",
+        searchField: "branch_name",
         options: list,
         render: {
           item: function (item, escape) {
             return (
               "<div class='ms-2 text-capitalize'>" +
-              escape(item.brand) +
-              " - " +
-              escape(item.product) +
-              " (&#8369;" +
-              escape(item.price) +
-              ")" +
+              escape(item.branch_name) +
               "</div>"
             );
           },
           option: function (item, escape) {
             return (
               "<div class='ms-2 text-capitalize my-1'>" +
-              escape(item.brand) +
-              " - " +
-              escape(item.product) +
-              " (&#8369;" +
-              escape(item.price) +
-              ")" +
-              "<span class='float-end me-2'>" +
-              "stock - " +
-              escape(item.stock) +
-              "</span>" +
+              escape(item.branch_name) +
               "</div>"
             );
           },
         },
         create: false,
         onChange: function (value) {
-          var selectedItem = this.options[value];
-          $("#prc").val(selectedItem.price);
-          $("#price").val(selectedItem.price);
-          $("#stock").val(selectedItem.stock);
+          $("#addTransaction")[0].reset();
+          var selectedBranchID = value;
+          // Load items associated with the selected branch
+          $.ajax({
+            type: "GET",
+            url: "includes/Home/backend/process.php?action=getItems",
+            data: { branchID: selectedBranchID }, // Pass selected branch ID
+            success: function (items) {
+              var list = JSON.parse(items);
+              $("#items")[0].selectize.clearOptions();
+              $("#items")[0].selectize.setValue("");
+              $("#items")[0].selectize.addOption(list);
+            },
+          });
         },
       });
     },
+  });
+});
+
+$(document).ready(function () {
+  $("#items").selectize({
+    maxItems: 1,
+    valueField: "id",
+    labelField: "product",
+    searchField: "name",
+    render: {
+      item: function (item, escape) {
+        return (
+          "<div class='ms-2 text-capitalize'>" +
+          escape(item.brand) +
+          " - " +
+          escape(item.product) +
+          " (&#8369;" +
+          escape(item.price) +
+          ")" +
+          "</div>"
+        );
+      },
+      option: function (item, escape) {
+        return (
+          "<div class='ms-2 text-capitalize my-1'>" +
+          escape(item.brand) +
+          " - " +
+          escape(item.product) +
+          " (&#8369;" +
+          escape(item.price) +
+          ")" +
+          "<span class='float-end me-2'>" +
+          "stock - " +
+          escape(item.stock) +
+          "</span>" +
+          "</div>"
+        );
+      },
+    },
+    create: false,
+    onChange: function (value) {
+      var selectedItem = this.options[value];
+      if (selectedItem) {
+        $("#price").val(selectedItem.price);
+        $("#stock").val(selectedItem.stock);
+      }
+    },
+  });
+
+  $("#qty").on("input", function () {
+    var qty = $("#qty").val();
+    var price = $("#price").val();
+    if (qty != null && price != null) {
+      var total = qty * price;
+      $("#prc").val(total);
+    }
   });
 
   $("#addTransaction").submit(function (e) {

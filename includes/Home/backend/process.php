@@ -8,11 +8,19 @@ if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'getItems':
             if ($_SERVER['REQUEST_METHOD'] === "GET") {
-                $list = $home->getItem();
+                $branch = $_GET['branchID'];
+                $list = $home->getItem($branch);
                 foreach ($list as &$item) {
                     $item['name'] = $item['brand'] . ' - ' . $item['product'];
                 }
                 echo json_encode($list, JSON_UNESCAPED_UNICODE);
+            }
+            break;
+        case 'getBranch':
+            if ($_SERVER['REQUEST_METHOD'] === "GET") {
+                $branch = $home->getBranch();
+
+                echo json_encode($branch, JSON_UNESCAPED_UNICODE);
             }
             break;
         case 'addTransaction':
@@ -21,8 +29,9 @@ if (isset($_GET['action'])) {
                 $qty = $_POST['qty'];
                 $prc = $_POST['prc'];
                 $stock = $_POST['stock'];
+                $branch = $_POST['branch'];
 
-                $success = $home->addTransaction($item, $qty, $prc, $stock);
+                $success = $home->addTransaction($branch, $item, $qty, $prc, $stock);
 
                 $response = array();
 

@@ -13,30 +13,21 @@ switch (isset($_GET["action"])) {
                 echo '<thead>';
                 echo '<tr>';
                 echo '<th scope=" col" class="text-center">#</th>';
+                echo '<th scope="col" class="text-center">Branch</th>';
                 echo '<th scope="col" class="text-center">Product Name</th>';
                 echo '<th scope="col" class="text-center">Brand</th>';
                 echo '<th scope="col" class="text-center">Price</th>';
-                echo '<th scope="col" class="text-center">Action</th>';
                 echo '</tr>';
                 echo '</thead>';
                 echo  '<tbody>';
                 foreach ($list as $row) {
                     echo '<tr>';
                     echo '<th scope="row" class="text-center">' . $count++ . '</th>';
+                    echo '<td class="text-center">' . $row['branch_name'] . '</td>';
                     echo '<td class="text-center">' . $row['brand'] . '</td>';
                     echo '<td class="text-center">' . $row['product'] . '</td>';
-                    if ($row['status'] == 'free') :
-                        echo "<td class='text-center'> Free </td>";
-                    elseif ($row['status'] == 'replaced') :
-                        echo "<td class='text-center'>-</td>";
-                    else :
-                        echo '<td class="text-center">₱' . $row['total_price'] . '</td>';
-                    endif;
-                    if ($row['status'] == 'replaced') :
-                        echo "<td class='text-center text-warning'>Replaced</td>";
-                    else :
-                        echo '<td class="text-center"> <button type="button" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class="btn btn-secondary btn-sm rounded refund" id="returnSale" data-id="' . $row['sid'] . '"data-stock="' . $row['id'] . '" data-qty="' . $row['quantity'] . '">Replace</button> </td>';
-                    endif;
+                    echo '<td class="text-center">₱' . $row['total_price'] . '</td>';
+
                     echo '</tr>';
                 }
                 echo '</tbody>';

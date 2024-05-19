@@ -11,8 +11,12 @@ include('components/nav.php');
         case 'Stock Management':
             include('includes/Stocks/index.php');
             break;
+        case 'Report':
+            include('includes/Report/index.php');
+            break;
         default:
-            include('includes/Home/index.html');
+            header('location: index.php?path=Dashboard');
+            exit;
     }
     ?>
 </section>

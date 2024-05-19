@@ -9,6 +9,7 @@ if (isset($_GET['action'])) {
 
         case 'addStock':
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $branch = $_POST['branch'];
                 $brand = $_POST['brand'];
                 $product = $_POST['product'];
                 $stockQty = $_POST['stockQty'];
@@ -16,7 +17,7 @@ if (isset($_GET['action'])) {
 
                 if ($brand && $product && $stockQty !== false && $price !== false) {
 
-                    $success = $stock->addStock($brand, $product, $stockQty, $price);
+                    $success = $stock->addStock($branch, $brand, $product, $stockQty, $price);
 
 
                     $response = array();
@@ -130,5 +131,32 @@ if (isset($_GET['action'])) {
                 echo json_encode($response);
             }
             break;
+        case 'stockList':
+            if ($_SERVER['REQUEST_METHOD'] === "GET") {
+                $id = $_GET["id"];
+                $list = $stock->getItem($id);
+                foreach ($list as &$item) {
+                    $item['name'] = $item['brand'] . ' - ' . $item['product'];
+                }
+                echo json_encode($list, JSON_UNESCAPED_UNICODE);
+            }
+            break;
+        case 'addNewStock':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $list = $_POST['list'];
+                $newStock = $_POST['newStock'];
+                $add = $stock->addNewStock($list, $newStock);
+
+                $response = array();
+                if ($add) {
+                    $response['success'] = true;
+                    $response['message'] = "Added new stock successfully";
+                } else {
+                    $response['success'] = false;
+                    $response['message'] = "Failed to add new stock. Please try again later.";
+                }
+
+                echo json_encode($response);
+            }
     }
 }

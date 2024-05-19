@@ -13,10 +13,10 @@ class Stock
         $this->conn = $conn;
     }
 
-    public function addStock($brand, $product, $stockQty, $price)
+    public function addStock($branch, $brand, $product, $stockQty, $price)
     {
-        $stmt = $this->conn->prepare("INSERT INTO `stock` (`brand`, `product`, `stock`, `price`) VALUES (?,?,?,?)");
-        $stmt->bind_param("ssss", $brand, $product, $stockQty, $price);
+        $stmt = $this->conn->prepare("INSERT INTO `stock` (`branchID`,`brand`, `product`, `stock`, `price`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("issss", $branch, $brand, $product, $stockQty, $price);
         if ($stmt->execute()) {
             $name = $brand . "-" . $product;
             $add = $this->conn->prepare("INSERT INTO `log`(`action`, `changes`) VALUES ('added',?)");
@@ -28,9 +28,9 @@ class Stock
         }
     }
 
-    public function stockList()
+    public function stockList($id)
     {
-        $stmt = "SELECT * FROM `stock`";
+        $stmt = "SELECT * FROM `stock` WHERE `branchID` =" . $id;
         $result = $this->conn->query($stmt);
         $list = [];
         if ($result->num_rows > 0) {
@@ -99,5 +99,37 @@ class Stock
         }
 
         return $content;
+    }
+
+    public function getItem($id)
+    {
+        $sql = "SELECT * FROM `stock` WHERE `branchID` =" . $id;
+        $result = $this->conn->query($sql);
+        $item = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $item[] = $row;
+            }
+        }
+        return $item;
+    }
+
+    public function addNewStock($list, $newStock)
+    {
+        $stmt = $this->conn->prepare("UPDATE `stock` SET `stock`= `stock` +  ? WHERE `id` = ?");
+        $stmt->bind_param("ii", $newStock, $list);
+
+        if ($stmt->execute()) {
+
+            $add = $this->conn->prepare("INSERT INTO `log`(`action`, `stock_id`, `changes`) VALUES ('added new stock', ?, ?)");
+            $add->bind_param("ii", $list, $newStock);
+            $add->execute();
+            $add->close();
+
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

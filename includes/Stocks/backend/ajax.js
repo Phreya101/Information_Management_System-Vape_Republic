@@ -18,7 +18,7 @@ $(document).ready(function () {
             timer: 1500,
           });
           setTimeout(function () {
-            window.location = "index.php?path=Stock%20Management";
+            location.reload();
           }, 1500);
         } else {
           Swal.fire({
@@ -40,9 +40,11 @@ $(document).ready(function () {
 // Stock List
 $(document).ready(function () {
   function getList() {
+    var branch = $("#branch").val();
     $.ajax({
       url: "includes/Stocks/backend/stockList.php",
       type: "GET",
+      data: { id: branch },
       success: function (list) {
         $("#stockTable").html(list);
       },
@@ -85,7 +87,7 @@ $(document).ready(function () {
                 timer: 1500,
               });
               setTimeout(function () {
-                window.location = "index.php?path=Stock%20Management";
+                location.reload();
               }, 1500);
             } else {
               Swal.fire({
@@ -141,7 +143,7 @@ $(document).ready(function () {
             timer: 1500,
           });
           setTimeout(function () {
-            window.location = "index.php?path=Stock%20Management";
+            location.reload();
           }, 1500);
           $("#addStock")[0].reset();
         } else {
@@ -175,4 +177,96 @@ $(document).ready(function () {
     });
   }
   fetchLog();
+});
+
+$(document).ready(function () {
+  var branch = $("#branch").val();
+  $.ajax({
+    type: "GET",
+    data: { id: branch },
+    url: "includes/Stocks/backend/process.php?action=stockList",
+    success: function (list) {
+      var list = JSON.parse(list);
+      $("#stock-list").selectize({
+        maxItems: 1,
+        valueField: "id",
+        labelField: "product",
+        searchField: "name",
+        options: list,
+        render: {
+          item: function (item, escape) {
+            return (
+              "<div class='ms-2 text-capitalize'>" +
+              escape(item.brand) +
+              " - " +
+              escape(item.product) +
+              " (&#8369;" +
+              escape(item.price) +
+              ")" +
+              "</div>"
+            );
+          },
+          option: function (item, escape) {
+            return (
+              "<div class='ms-2 text-capitalize my-1'>" +
+              escape(item.brand) +
+              " - " +
+              escape(item.product) +
+              " (&#8369;" +
+              escape(item.price) +
+              ")" +
+              "<span class='float-end me-2'>" +
+              "stock - " +
+              escape(item.stock) +
+              "</span>" +
+              "</div>"
+            );
+          },
+        },
+        create: false,
+        onChange: function (value) {
+          var selectedItem = this.options[value];
+          $("#currentStock").val(selectedItem.stock);
+        },
+      });
+    },
+  });
+});
+
+$(document).ready(function () {
+  $("#add-stock").submit(function (e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    $.ajax({
+      type: "post",
+      url: "includes/Stocks/backend/process.php?action=addNewStock",
+      data: formData,
+      success: function (response) {
+        var data = JSON.parse(response);
+        if (data.success) {
+          Swal.fire({
+            title: "Added!",
+            text: data.message,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setTimeout(function () {
+            location.reload();
+          }, 1500);
+        } else {
+          Swal.fire({
+            title: "Failed!",
+            text: data.message,
+            icon: "error",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr.responseText);
+      },
+    });
+  });
 });

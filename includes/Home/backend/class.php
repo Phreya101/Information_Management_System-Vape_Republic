@@ -14,8 +14,7 @@ class Home
 
     public function getList()
     {
-        $sql = "SELECT `st`.`price`,`st`.`id` as `id`, `s`.`id` as `sid` ,`st`.`brand`,`st`.`price`, `st`.`stock`, `st`.`product`, `s`.`quantity`, `s`.`total_price`, `s`.`status` FROM `sales` `s` INNER JOIN `stock` `st` ON `s`.`stock_id` = `st`.`id` WHERE 
-        DATE(s.created_at) = CURDATE() ORDER BY `s`.`time_created` desc";
+        $sql = "SELECT `b`.`branch_name`, `st`.`price`, `st`.`id` AS `id`, `s`.`id` AS `sid`, `st`.`brand`, `st`.`price`, `st`.`stock`, `st`.`product`, `s`.`quantity`, `s`.`total_price`, `s`.`status` FROM `sales` `s` INNER JOIN `stock` `st` ON `s`.`stock_id` = `st`.`id` INNER JOIN `branch` `b` ON `b`.`id` = `s`.`branchID` WHERE DATE(`s`.`created_at`) = CURDATE() ORDER BY `s`.`time_created` DESC";
         $result = $this->conn->query($sql);
         $list = [];
         if ($result->num_rows > 0) {
@@ -26,9 +25,9 @@ class Home
         return $list;
     }
 
-    public function getItem()
+    public function getItem($branch)
     {
-        $sql = "SELECT * FROM `stock` WHERE `stock` > 0";
+        $sql = "SELECT * FROM `stock` WHERE `stock` > 0 AND `branchID` =" . $branch;
         $result = $this->conn->query($sql);
         $item = [];
         if ($result->num_rows > 0) {
@@ -39,11 +38,24 @@ class Home
         return $item;
     }
 
-    public function addTransaction($item, $qty, $prc, $stock)
+    public function getBranch()
+    {
+        $sql = "SELECT * FROM `branch`";
+        $result = $this->conn->query($sql);
+        $branch = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $branch[] = $row;
+            }
+        }
+        return $branch;
+    }
+
+    public function addTransaction($branch, $item, $qty, $prc, $stock)
     {
         if ($prc > 0) {
-            $stmt = $this->conn->prepare("INSERT INTO `sales`(`stock_id`, `quantity`, `total_price`) VALUES (?,?,?)");
-            $stmt->bind_param("ssi", $item, $qty, $prc);
+            $stmt = $this->conn->prepare("INSERT INTO `sales`(`branchID`, `stock_id`, `quantity`, `total_price`) VALUES (?,?,?,?)");
+            $stmt->bind_param("issi", $branch, $item, $qty, $prc);
         } else {
             $stmt = $this->conn->prepare("INSERT INTO `sales`(`stock_id`, `quantity`, `total_price`, `status`) VALUES (?,?,?,'free')");
             $stmt->bind_param("ssi", $item, $qty, $prc);
@@ -51,22 +63,22 @@ class Home
 
 
         if ($stmt->execute()) {
-            $sql = "SELECT * FROM `report` WHERE `stock_id` =" . $item . " AND `created_at` = CURDATE()";
+            $sql = "SELECT * FROM `report` WHERE `stock_id` =" . $item . " AND `created_at` = CURDATE() AND `branchID` =" . $branch;
             $result = $this->conn->query($sql);
             if (mysqli_num_rows($result) == 0) {
-                $add = $this->conn->prepare("INSERT INTO `report`(`stock_id`, `stock`, `quantity`, `total_price`) VALUES (?,?,?,?)");
-                $add->bind_param("sssi", $item, $stock, $qty, $prc);
+                $add = $this->conn->prepare("INSERT INTO `report`(`branchID`, `stock_id`, `stock`, `quantity`, `total_price`) VALUES (?,?,?,?,?)");
+                $add->bind_param("isssi", $branch, $item, $stock, $qty, $prc);
                 $add->execute();
                 $add->close();
             } else {
-                $update = $this->conn->prepare("UPDATE `report` SET `quantity`= `quantity` + ?,`total_price`= `total_price` + ? WHERE `stock_id` = ? AND `created_at` = CURDATE()");
-                $update->bind_param("sis", $qty, $prc, $item);
+                $update = $this->conn->prepare("UPDATE `report` SET `quantity`= `quantity` + ?,`total_price`= `total_price` + ? WHERE `stock_id` = ? AND `created_at` = CURDATE() AND `branchID` = ?");
+                $update->bind_param("sisi", $qty, $prc, $item, $branch);
                 $update->execute();
                 $update->close();
             }
 
-            $deduct = $this->conn->prepare("UPDATE `stock` SET `stock` = `stock` - ? WHERE `id` = ?");
-            $deduct->bind_param("ss", $qty, $item);
+            $deduct = $this->conn->prepare("UPDATE `stock` SET `stock` = `stock` - ? WHERE `id` = ? AND `branchID` = ?");
+            $deduct->bind_param("ssi", $qty, $item, $branch);
             $deduct->execute();
             $deduct->close();
 

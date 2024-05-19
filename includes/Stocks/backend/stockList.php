@@ -4,7 +4,8 @@ include("../../../auth/conn.php");
 $stock = new Stock($conn);
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    $list = $stock->stockList();
+    $id = $_GET['id'];
+    $list = $stock->stockList($id);
     $count = 1;
     if (!empty($list)) {
         echo '<table class="table table-hove text-capitalize" class="text-center" id="inventory">';
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             echo '<td>' . $key['product'] . '</td>';
             echo '<td class="text-start">' . $key['stock'] . '</td>';
             echo '<td> &#8369;' . $key['price'] . '</td>';
-            echo '<td>';
+            echo '<td class="d-flex flex-lg-row">';
 
             echo '<button type="button" class="btn btn-success btn-sm rounded editStock" data-id="' . $key['id'] . '"><i class="fa-solid fa-pen"></i></button>';
 

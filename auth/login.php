@@ -11,7 +11,7 @@ if (isset($_POST["login"])) {
     $row = mysqli_fetch_assoc($result);
 
     if (mysqli_num_rows($result) > 0) {
-
+        $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['password'] = $row['password'];
         header('Location: ../index.php?path=Dashboard&action=Login Successfully!');
