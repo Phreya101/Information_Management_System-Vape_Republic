@@ -1,5 +1,5 @@
 
-# Inventory Management System
+# About the System
 
 This project is a tailored solution designed specifically with small businesses in mind, crafted particularly for the unique needs of a vape shop. At its core, it streamlines and automates the intricate process of deducting sales from inventory, ensuring accurate and efficient management of stock levels. Beyond mere inventory tracking, it boasts a sophisticated feature—a dynamic chart—that provides real-time insights into the daily income of the vape shop. This dynamic visualization not only allows for quick assessment of business performance but also facilitates informed decision-making to drive growth and profitability.
 
@@ -11,7 +11,14 @@ This expanded version delves deeper into the features and benefits of the projec
 
 
 
-## Authors
+##  Developer
+- Humphrey Y. Mendoza
 
-- [@Phreya101](https://www.github.com/Phreya101)
+### Contacts
+- Email: phrey.m19.hm@gmail.com
+
+### Social Media
+- Git: [@Phreya101](https://www.github.com/Phreya101)
+- Facebook: https://www.facebook.com/PHREYA101/
+
 
