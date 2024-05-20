@@ -9,7 +9,7 @@ With its user-friendly interface and robust functionality, this project stands a
 
 This expanded version delves deeper into the features and benefits of the project, emphasizing its value proposition for vape shop owners.
 
-##  Screeshot
+##  Display Snapshot
 
 - Login page
 ![Screenshot 2024-05-20 230357](https://github.com/Phreya101/Inventory_Management_System-Vape_Republic/assets/101626641/41f6da4c-07c8-4562-8b1d-20341c60d937)
