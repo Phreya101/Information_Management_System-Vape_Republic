@@ -21,7 +21,7 @@ This expanded version delves deeper into the features and benefits of the projec
 
 -  Stock Management
   
-![S![Screenshot 2024-05-20 230443](https://github.com/Phreya101/Inventory_Management_System-Vape_Republic/assets/101626641/300ca8c3-a51c-43c9-8b2d-d5a8d5a979ba)
+![Screenshot 2024-05-20 230443](https://github.com/Phreya101/Inventory_Management_System-Vape_Republic/assets/101626641/300ca8c3-a51c-43c9-8b2d-d5a8d5a979ba)
 
 - Report
   
