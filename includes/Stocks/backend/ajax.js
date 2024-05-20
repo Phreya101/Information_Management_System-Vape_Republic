@@ -45,6 +45,7 @@ $(document).ready(function () {
       url: "includes/Stocks/backend/stockList.php",
       type: "GET",
       data: { id: branch },
+
       success: function (list) {
         $("#stockTable").html(list);
       },

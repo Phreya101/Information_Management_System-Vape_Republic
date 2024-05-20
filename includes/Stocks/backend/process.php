@@ -14,10 +14,11 @@ if (isset($_GET['action'])) {
                 $product = $_POST['product'];
                 $stockQty = $_POST['stockQty'];
                 $price = $_POST['price'];
+                $type = $_POST['type'];
 
                 if ($brand && $product && $stockQty !== false && $price !== false) {
 
-                    $success = $stock->addStock($branch, $brand, $product, $stockQty, $price);
+                    $success = $stock->addStock($branch, $type, $brand, $product, $stockQty, $price);
 
 
                     $response = array();

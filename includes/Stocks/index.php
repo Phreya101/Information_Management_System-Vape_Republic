@@ -1,5 +1,6 @@
 <?php
 if (isset($_GET['branchID'])) {
+    $branch = $_GET['branch'];
     $branchID = $_GET['branchID'];
 }
 ?>
@@ -8,8 +9,8 @@ if (isset($_GET['branchID'])) {
 
     <div class="rounded container-lg mx-2 my-3 align-items-center">
         <div class="card">
-            <div class="h4 card-header py-2 px-4 text-white bg-secondary">
-                <i class="fa-solid fa-boxes-packing text-dark"></i> Inventory List
+            <div class="h4 card-header py-2 px-4 text-white bg-secondary text-capitalize">
+                <i class="fa-solid fa-boxes-packing text-dark me-3"></i><?php echo $branch ?> Inventory
             </div>
 
             <div class="card-body">
@@ -33,29 +34,44 @@ if (isset($_GET['branchID'])) {
                         <div class="d-lg-flex flex-row">
                             <div class="form-group flex-fill mb-2w-100 mx-2">
                                 <label for="brand" class="fw-bold">Brand Name</label>
-                                <input type="text" name="brand" id="sBrand" class="form-control shadow-sm" required>
+                                <input type="text" name="brand" id="brand" class="form-control shadow-sm" required>
                             </div>
 
                             <div class="form-group mb-2 flex-fill  mx-2">
                                 <label for="product" class="fw-bold">Product Name</label>
-                                <input type="text" name="product" id="sProduct" class="form-control shadow-sm" required>
+                                <input type="text" name="product" id="product" class="form-control shadow-sm" required>
                             </div>
                         </div>
 
                         <div class="d-lg-flex flex-row mx-2">
-                            <div class="form-group mb-2">
+
+                            <div class="form-group mb-2 me-3 col-lg-4">
+                                <label for="type" class="fw-bold">Category</label>
+                                <select class="border-dark" name="type" id="type" class="border-dark" required>
+                                    <option value="" selected disabled></option>
+                                    <option value="Disposable">Disposable</option>
+                                    <option value="Juice">Juice</option>
+                                    <option value="Device">Device</option>
+                                    <option value="Accessories">Accessories</option>
+                                </select>
+                            </div>
+
+                            <script>
+                                $("#type").selectize();
+                            </script>
+
+                            <div class="form-group mb-2 me-3 col-lg-2">
                                 <label for="stockQty" class="fw-bold">Stock</label>
-                                <input type="number" name="stockQty" id="sStock" class="form-control shadow-sm"
-                                    required>
+                                <input type="number" name="stockQty" id="stockQty" class="form-control shadow-sm" required>
                             </div>
 
-                            <div class="form-group mb-2 ms-auto">
+                            <div class="form-group mb-2 me-3 col-lg-3">
                                 <label for="price" class="fw-bold">Price</label>
-                                <input type="number" name="price" id="sPrice" class="form-control shadow-sm" required>
+                                <input type="number" name="price" id="price" class="form-control shadow-sm" required>
                             </div>
 
-                            <div class="form-group mb-2 align-self-end ms-auto">
-                                <button type="submit" class="btn btn-primary float-end">Add Stock</button>
+                            <div class="form-group mb-2 col-lg-3 align-self-end ms-auto">
+                                <button type="submit" class="btn btn-primary">Add Stock</button>
                             </div>
                         </div>
                     </form>
@@ -87,7 +103,7 @@ if (isset($_GET['branchID'])) {
 
                         <div class="d-flex flex-lg-row">
                             <div class="form-group mb-3 col-lg-3 mx-2">
-                                <label for="" class='fw-bold mb-2'>Current Stock</label>
+                                <label class='fw-bold mb-2'>Current Stock</label>
                                 <input type="text" class="form-control shadow-sm" disabled id="currentStock">
                             </div>
 
@@ -95,12 +111,11 @@ if (isset($_GET['branchID'])) {
 
                             <div class="form-group mb-3 col-lg-3 mx-2">
                                 <label for="newStock" class='fw-bold mb-2'>New Stock</label>
-                                <input type="number" name="newStock" required class="form-control shadow-sm">
+                                <input type="number" name="newStock" id="newStock" required class="form-control shadow-sm">
                             </div>
 
                             <div class="form-group mb-3 align-self-end ms-auto">
-                                <button type="submit" id="addNewStock"
-                                    class="from-control float-end btn btn-primary">Add New Stock</button>
+                                <button type="submit" id="addNewStock" class="from-control float-end btn btn-primary">Add New Stock</button>
                             </div>
                         </div>
 

@@ -37,6 +37,7 @@ if (isset($_GET['view'])) {
     <p class="ms-3 mb-3"><span class="fw-bold">Date:</span> <?php echo $date_format;  ?></p>
 
     <div class="container-fluid px-3">
+        <!-- Disposable -->
         <table class="table table-sm border table-bordered">
             <thead>
                 <tr>
@@ -60,6 +61,211 @@ if (isset($_GET['view'])) {
                             branch b ON s.branchID = b.id
                         LEFT JOIN 
                             report r ON s.id = r.stock_id AND DATE(r.created_at) = '$date'
+                        WHERE s.category = 'Disposable'
+                        GROUP BY 
+                            s.brand, s.product
+                        ORDER BY 
+                        s.brand;";
+                $result = $conn->query($sql);
+                $hasStockOutData = false;
+                while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    <td class="text-center">
+                        <?php echo $row['brand'] . ' - ' . $row['product'] . ' (₱' . $row['price'] . ')' ?>
+                    </td>
+
+                    <td class="text-center">
+                        <?php
+                            echo $row['main'];
+                            ?>
+                    </td>
+                    <td class="text-center">
+                        <?php
+                            echo $row['macanaya']
+                            ?>
+                    </td>
+                    <td class="text-center">
+                        <?php echo $row['camalaniugan']; ?>
+                    </td>
+                    <td class="text-center">
+                        <?php echo $row['gonzaga']; ?>
+                    </td>
+                </tr>
+                <?php
+                }
+                ?>
+
+
+            </tbody>
+        </table>
+
+        <!-- Devices -->
+        <br>
+        <p class="mt-2 text-center">
+            <span class="text-center text-uppercase fw-bold mt-3 mb-5 h3">Devices</span>
+        </p>
+
+        <table class="table table-sm border table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">PRODUCT NAME</th>
+                    <th scope="col" class="text-center">Main Branch</th>
+                    <th scope="col" class="text-center">Macanaya</th>
+                    <th scope="col" class="text-center">Camalaniugan</th>
+                    <th scope="col" class="text-center">Gonzaga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT s.brand, s.product, s.price,
+                                COALESCE(MAX(CASE WHEN b.id = 1 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 1 THEN s.stock END), 0) AS main, 
+                                 COALESCE(MAX(CASE WHEN b.id = 2 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 2 THEN s.stock END), 0) AS macanaya, 
+                                COALESCE(MAX(CASE WHEN b.id = 5 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 5 THEN s.stock END), 0) AS camalaniugan, 
+                                COALESCE(MAX(CASE WHEN b.id = 6 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 6 THEN s.stock END), 0) AS gonzaga
+                        FROM 
+                            stock s
+                        LEFT JOIN 
+                            branch b ON s.branchID = b.id
+                        LEFT JOIN 
+                            report r ON s.id = r.stock_id AND DATE(r.created_at) = '$date'
+                        WHERE s.category = 'Device'
+                        GROUP BY 
+                            s.brand, s.product
+                        ORDER BY 
+                        s.brand;";
+                $result = $conn->query($sql);
+                $hasStockOutData = false;
+                while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    <td class="text-center">
+                        <?php echo $row['brand'] . ' - ' . $row['product'] . ' (₱' . $row['price'] . ')' ?>
+                    </td>
+
+                    <td class="text-center">
+                        <?php
+                            echo $row['main'];
+                            ?>
+                    </td>
+                    <td class="text-center">
+                        <?php
+                            echo $row['macanaya']
+                            ?>
+                    </td>
+                    <td class="text-center">
+                        <?php echo $row['camalaniugan']; ?>
+                    </td>
+                    <td class="text-center">
+                        <?php echo $row['gonzaga']; ?>
+                    </td>
+                </tr>
+                <?php
+                }
+                ?>
+
+
+            </tbody>
+        </table>
+
+        <!-- Juices -->
+        <br>
+        <p class="mt-2 text-center">
+            <span class="text-center text-uppercase fw-bold mt-3 mb-5 h3">Juice</span>
+        </p>
+
+        <table class="table table-sm border table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">PRODUCT NAME</th>
+                    <th scope="col" class="text-center">Main Branch</th>
+                    <th scope="col" class="text-center">Macanaya</th>
+                    <th scope="col" class="text-center">Camalaniugan</th>
+                    <th scope="col" class="text-center">Gonzaga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT s.brand, s.product, s.price,
+                                COALESCE(MAX(CASE WHEN b.id = 1 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 1 THEN s.stock END), 0) AS main, 
+                                 COALESCE(MAX(CASE WHEN b.id = 2 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 2 THEN s.stock END), 0) AS macanaya, 
+                                COALESCE(MAX(CASE WHEN b.id = 5 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 5 THEN s.stock END), 0) AS camalaniugan, 
+                                COALESCE(MAX(CASE WHEN b.id = 6 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 6 THEN s.stock END), 0) AS gonzaga
+                        FROM 
+                            stock s
+                        LEFT JOIN 
+                            branch b ON s.branchID = b.id
+                        LEFT JOIN 
+                            report r ON s.id = r.stock_id AND DATE(r.created_at) = '$date'
+                        WHERE s.category = 'Juice'
+                        GROUP BY 
+                            s.brand, s.product
+                        ORDER BY 
+                        s.brand;";
+                $result = $conn->query($sql);
+                $hasStockOutData = false;
+                while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    <td class="text-center">
+                        <?php echo $row['brand'] . ' - ' . $row['product'] . ' (₱' . $row['price'] . ')' ?>
+                    </td>
+
+                    <td class="text-center">
+                        <?php
+                            echo $row['main'];
+                            ?>
+                    </td>
+                    <td class="text-center">
+                        <?php
+                            echo $row['macanaya']
+                            ?>
+                    </td>
+                    <td class="text-center">
+                        <?php echo $row['camalaniugan']; ?>
+                    </td>
+                    <td class="text-center">
+                        <?php echo $row['gonzaga']; ?>
+                    </td>
+                </tr>
+                <?php
+                }
+                ?>
+
+
+            </tbody>
+        </table>
+
+        <!-- Accessories -->
+        <br>
+        <p class="mt-2 text-center">
+            <span class="text-center text-uppercase fw-bold mt-3 mb-5 h3">Accessories</span>
+        </p>
+
+        <table class="table table-sm border table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">PRODUCT NAME</th>
+                    <th scope="col" class="text-center">Main Branch</th>
+                    <th scope="col" class="text-center">Macanaya</th>
+                    <th scope="col" class="text-center">Camalaniugan</th>
+                    <th scope="col" class="text-center">Gonzaga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT s.brand, s.product, s.price,
+                                COALESCE(MAX(CASE WHEN b.id = 1 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 1 THEN s.stock END), 0) AS main, 
+                                 COALESCE(MAX(CASE WHEN b.id = 2 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 2 THEN s.stock END), 0) AS macanaya, 
+                                COALESCE(MAX(CASE WHEN b.id = 5 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 5 THEN s.stock END), 0) AS camalaniugan, 
+                                COALESCE(MAX(CASE WHEN b.id = 6 THEN (r.stock - r.quantity) END), MAX(CASE WHEN b.id = 6 THEN s.stock END), 0) AS gonzaga
+                        FROM 
+                            stock s
+                        LEFT JOIN 
+                            branch b ON s.branchID = b.id
+                        LEFT JOIN 
+                            report r ON s.id = r.stock_id AND DATE(r.created_at) = '$date'
+                        WHERE s.category = 'Accessories'
                         GROUP BY 
                             s.brand, s.product
                         ORDER BY 

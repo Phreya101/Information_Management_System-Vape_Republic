@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 12:40 PM
+-- Generation Time: May 20, 2024 at 04:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -81,21 +81,93 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id`, `action`, `stock_id`, `changes`, `created_at`) VALUES
-(1, 'deducted', '4', '5', '2024-05-19'),
-(2, 'deducted', '8', '2', '2024-05-19'),
-(3, 'deducted', '5', '3', '2024-05-19'),
-(4, 'deducted', '4', '4', '2024-05-19'),
-(5, 'deducted', '1', '6', '2024-05-19'),
-(6, 'deducted', '2', '2', '2024-05-19'),
-(7, 'deducted', '3', '4', '2024-05-19'),
-(8, 'deducted', '6', '2', '2024-05-19'),
-(9, 'deducted', '10', '1', '2024-05-19'),
-(10, 'added', '', 'add-add', '2024-05-19'),
-(11, 'deducted', '14', '2', '2024-05-19'),
-(12, 'added', '', 'adda-add', '2024-05-19'),
-(13, 'added', '', 'add-add', '2024-05-19'),
-(14, 'deducted', '16', '3', '2024-05-19'),
-(15, 'deducted', '6', '3', '2024-05-19');
+(1, 'added', '', 'Romio-A2', '2024-05-20'),
+(2, 'added', '', 'Romio-A2', '2024-05-20'),
+(3, 'added', '', 'Flava-Maze Pro', '2024-05-20'),
+(4, 'added', '', 'yhdgfhsgdjsdfjgsfvhshfsdhfsdhfd-dhfhsgdkhdsgsghasdasdf', '2024-05-20'),
+(5, 'added', '', 'sample-sample', '2024-05-20'),
+(6, 'added', '', 'Romio-1', '2024-05-20'),
+(7, 'added', '', 'Lanyard-black', '2024-05-20'),
+(8, 'added', '', 'Tang-Orange', '2024-05-20'),
+(9, 'added', '', 'Nestea-Lemon', '2024-05-20'),
+(10, 'added', '', 'Geekbar-1', '2024-05-20'),
+(11, 'added', '', 'Flava-Apok', '2024-05-20'),
+(12, 'added', '', 'Tang-Mango', '2024-05-20'),
+(13, 'added', '', 'Geekbar-2', '2024-05-20'),
+(14, 'added', '', 'Lace-3', '2024-05-20'),
+(15, 'added', '', 'flava-mazepro', '2024-05-20'),
+(16, 'added', '', 'boss-Nevoks', '2024-05-20'),
+(17, 'added', '', 'Madmaster-1', '2024-05-20'),
+(18, 'added', '', 'shift-1', '2024-05-20'),
+(19, 'added', '', 'Bearbrand-Choco', '2024-05-20'),
+(20, 'added', '', 'Tang-Grapes', '2024-05-20'),
+(21, 'added', '', 'Tang-Kalamansi', '2024-05-20'),
+(22, 'added', '', 'Sample-x', '2024-05-20'),
+(23, 'added', '', 'Ex-Y', '2024-05-20'),
+(24, 'added', '', 'Samp-z', '2024-05-20'),
+(25, 'added', '', 'Example-X', '2024-05-20'),
+(26, 'added', '', 'S1-blue', '2024-05-20'),
+(27, 'added', '', 'S2-black', '2024-05-20'),
+(28, 'added', '', 'S3-Pink', '2024-05-20'),
+(29, 'added', '', 'S4-Violet', '2024-05-20'),
+(30, 'added', '', 'Flava-Maze Pro', '2024-05-20'),
+(31, 'added', '', 'flava-new', '2024-05-20'),
+(32, 'added', '', 'Romio-1', '2024-05-20'),
+(33, 'added', '', 'Blck-MM', '2024-05-20'),
+(34, 'added', '', 'Tang-Orange', '2024-05-20'),
+(35, 'added', '', 'Tang-Kalamansi', '2024-05-20'),
+(36, 'added', '', 'Nestea-Lemon', '2024-05-20'),
+(37, 'added', '', 'Nestea-Apple', '2024-05-20'),
+(38, 'added', '', 'new-d', '2024-05-20'),
+(39, 'added', '', 'new-a', '2024-05-20'),
+(40, 'added', '', 'new-b', '2024-05-20'),
+(41, 'added', '', 'new-c', '2024-05-20'),
+(42, 'added', '', 'rubber-a', '2024-05-20'),
+(43, 'added', '', 'rubber-b', '2024-05-20'),
+(44, 'added', '', 'rubber-c', '2024-05-20'),
+(45, 'added', '', 'rubber-d', '2024-05-20'),
+(46, 'added', '', 'Flava-Maze Pro', '2024-05-20'),
+(47, 'added', '', 'Flava-Apok', '2024-05-20'),
+(48, 'added', '', 'Boss-Nevoks', '2024-05-20'),
+(49, 'added', '', 'Romio-new', '2024-05-20'),
+(50, 'added', '', 'Shift-1', '2024-05-20'),
+(51, 'added', '', 'Tang-Mango', '2024-05-20'),
+(52, 'added', '', 'Tang-Orange', '2024-05-20'),
+(53, 'added', '', 'Tang-Grapes', '2024-05-20'),
+(54, 'added', '', 'Tang-Kalamansi', '2024-05-20'),
+(55, 'added', '', 'Nestea-Apple', '2024-05-20'),
+(56, 'added', '', 'Ex-a', '2024-05-20'),
+(57, 'added', '', 'Ex-b', '2024-05-20'),
+(58, 'added', '', 'Ex-c', '2024-05-20'),
+(59, 'added', '', 'Ex-d', '2024-05-20'),
+(60, 'added', '', 'Ex-e', '2024-05-20'),
+(61, 'added', '', 'Sample-a', '2024-05-20'),
+(62, 'added', '', 'Sample-B', '2024-05-20'),
+(63, 'added', '', 'Sample-C', '2024-05-20'),
+(64, 'added', '', 'Sample-D', '2024-05-20'),
+(65, 'added', '', 'Sample-E', '2024-05-20'),
+(66, 'added', '', 'Shift-1', '2024-05-20'),
+(67, 'added', '', 'Flava-Apok', '2024-05-20'),
+(68, 'added', '', 'Flava-Maze Pro', '2024-05-20'),
+(69, 'added', '', 'Boss-Nevoks', '2024-05-20'),
+(70, 'added', '', 'Romio-1', '2024-05-20'),
+(71, 'added', '', 'Tang-Orange', '2024-05-20'),
+(72, 'added', '', 'Tang-Mango', '2024-05-20'),
+(73, 'added', '', 'Tang-Grapes', '2024-05-20'),
+(74, 'added', '', 'Nestea-Apple', '2024-05-20'),
+(75, 'added', '', 'Nestea-Lemon', '2024-05-20'),
+(76, 'added', '', 'Ex-A', '2024-05-20'),
+(77, 'added', '', 'Ex-B', '2024-05-20'),
+(78, 'added', '', 'Ex-C', '2024-05-20'),
+(79, 'added', '', 'Ex-D', '2024-05-20'),
+(80, 'added', '', 'Ex-D', '2024-05-20'),
+(81, 'added', '', 'Sample-A', '2024-05-20'),
+(82, 'added', '', 'Sample-B', '2024-05-20'),
+(83, 'added', '', 'Sample-C', '2024-05-20'),
+(84, 'added', '', 'Sam-D', '2024-05-20'),
+(85, 'added', '', 'Sample-E', '2024-05-20'),
+(86, 'deducted', '1', '5', '2024-05-20'),
+(87, 'deducted', '1', '5', '2024-05-20');
 
 -- --------------------------------------------------------
 
@@ -118,16 +190,7 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`id`, `branchID`, `stock_id`, `stock`, `quantity`, `total_price`, `created_at`) VALUES
-(1, 2, '4', '15', '9', '4950', '2024-05-19'),
-(2, 1, '8', '48', '2', '1100', '2024-05-19'),
-(3, 1, '5', '13', '3', '1650', '2024-05-19'),
-(4, 5, '1', '20', '6', '3300', '2024-05-19'),
-(5, 5, '2', '8', '2', '1100', '2024-05-19'),
-(6, 6, '3', '10', '4', '2200', '2024-05-19'),
-(8, 2, '10', '20', '1', '55', '2024-05-19'),
-(9, 1, '14', '45', '2', '1100', '2024-05-19'),
-(10, 2, '16', '20', '3', '1650', '2024-05-19'),
-(11, 6, '6', '8', '3', '1650', '2024-05-19');
+(1, 1, '1', '10', '10', '5500', '2024-05-20');
 
 -- --------------------------------------------------------
 
@@ -151,18 +214,8 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `branchID`, `stock_id`, `quantity`, `total_price`, `status`, `created_at`, `time_created`) VALUES
-(1, 2, 4, '5', '2750', NULL, '2024-05-19', '11:05:46'),
-(2, 1, 8, '2', '1100', NULL, '2024-05-19', '11:06:02'),
-(3, 1, 5, '3', '1650', NULL, '2024-05-19', '11:06:11'),
-(4, 2, 4, '4', '2200', NULL, '2024-05-19', '11:06:26'),
-(5, 5, 1, '6', '3300', NULL, '2024-05-19', '11:06:37'),
-(6, 5, 2, '2', '1100', NULL, '2024-05-19', '11:06:47'),
-(7, 6, 3, '4', '2200', NULL, '2024-05-19', '11:06:58'),
-(8, 6, 6, '2', '1100', NULL, '2024-05-19', '11:07:09'),
-(9, 2, 10, '1', '55', NULL, '2024-05-19', '11:38:20'),
-(10, 1, 14, '2', '1100', NULL, '2024-05-19', '18:34:14'),
-(11, 2, 16, '3', '1650', NULL, '2024-05-19', '18:36:32'),
-(12, 6, 6, '3', '1650', NULL, '2024-05-19', '18:39:25');
+(1, 1, 1, '5', '2750', NULL, '2024-05-20', '22:39:58'),
+(2, 1, 1, '5', '2750', NULL, '2024-05-20', '22:40:25');
 
 -- --------------------------------------------------------
 
@@ -173,6 +226,7 @@ INSERT INTO `sales` (`id`, `branchID`, `stock_id`, `quantity`, `total_price`, `s
 CREATE TABLE `stock` (
   `id` int(11) NOT NULL,
   `branchID` int(11) NOT NULL,
+  `category` varchar(50) NOT NULL,
   `brand` varchar(100) NOT NULL,
   `product` varchar(100) NOT NULL,
   `stock` varchar(100) NOT NULL,
@@ -184,23 +238,87 @@ CREATE TABLE `stock` (
 -- Dumping data for table `stock`
 --
 
-INSERT INTO `stock` (`id`, `branchID`, `brand`, `product`, `stock`, `price`, `created_at`) VALUES
-(1, 5, 'Geek Bar', 'Pro 15000', '14', '550', '2024-05-12'),
-(2, 5, 'Flava Oxbar', 'Maze Pro', '6', '550', '2024-05-13'),
-(3, 6, 'Flava', 'Romio', '6', '550', '2024-05-13'),
-(4, 2, 'Flava', 'Hyper Bar', '6', '550', '2024-05-13'),
-(5, 1, 'Romio', 'A2', '10', '550', '2024-05-18'),
-(6, 6, 'relx', 'pod', '5', '550', '2024-05-18'),
-(7, 5, 'add', 'add', '30', '55', '2024-05-19'),
-(8, 1, 'Shift', 'chillax', '46', '550', '2024-05-19'),
-(9, 1, 'try', 'try', '55', '11', '2024-05-19'),
-(10, 2, 'try1', 'try1', '19', '55', '2024-05-19'),
-(11, 5, 'try2', 'try2', '60', '99', '2024-05-19'),
-(12, 6, 'try3', 'try3', '66', '505', '2024-05-19'),
-(13, 2, 'Shift', 'chillax', '28', '550', '2024-05-19'),
-(14, 1, 'add', 'add', '43', '550', '2024-05-19'),
-(15, 5, 'adda', 'add', '20', '550', '2024-05-19'),
-(16, 2, 'add', 'add', '17', '550', '2024-05-19');
+INSERT INTO `stock` (`id`, `branchID`, `category`, `brand`, `product`, `stock`, `price`, `created_at`) VALUES
+(1, 1, 'Disposable', 'Romio', '1', '0', '550', '2024-05-20'),
+(2, 1, 'Accessories', 'Lanyard', 'black', '10', '50', '2024-05-20'),
+(3, 1, 'Juice', 'Tang', 'Orange', '10', '250', '2024-05-20'),
+(4, 1, 'Juice', 'Nestea', 'Lemon', '10', '250', '2024-05-20'),
+(5, 1, 'Device', 'Geekbar', '1', '10', '2000', '2024-05-20'),
+(6, 2, 'Disposable', 'Flava', 'Apok', '10', '550', '2024-05-20'),
+(7, 2, 'Juice', 'Tang', 'Mango', '10', '250', '2024-05-20'),
+(8, 2, 'Device', 'Geekbar', '2', '10', '3000', '2024-05-20'),
+(9, 2, 'Accessories', 'Lace', '3', '10', '20', '2024-05-20'),
+(10, 1, 'Disposable', 'flava', 'mazepro', '10', '550', '2024-05-20'),
+(11, 1, 'Disposable', 'boss', 'Nevoks', '10', '550', '2024-05-20'),
+(12, 1, 'Disposable', 'Madmaster', '1', '10', '550', '2024-05-20'),
+(13, 1, 'Disposable', 'shift', '1', '10', '550', '2024-05-20'),
+(14, 1, 'Juice', 'Bearbrand', 'Choco', '10', '250', '2024-05-20'),
+(15, 1, 'Juice', 'Tang', 'Grapes', '10', '250', '2024-05-20'),
+(16, 1, 'Juice', 'Tang', 'Kalamansi', '10', '250', '2024-05-20'),
+(17, 1, 'Device', 'Sample', 'x', '10', '2000', '2024-05-20'),
+(18, 1, 'Device', 'Ex', 'Y', '10', '2000', '2024-05-20'),
+(19, 1, 'Device', 'Samp', 'z', '10', '2000', '2024-05-20'),
+(20, 1, 'Device', 'Example', 'X', '10', '2000', '2024-05-20'),
+(21, 1, 'Accessories', 'S1', 'blue', '10', '50', '2024-05-20'),
+(22, 1, 'Accessories', 'S2', 'black', '10', '50', '2024-05-20'),
+(23, 1, 'Accessories', 'S3', 'Pink', '10', '50', '2024-05-20'),
+(24, 1, 'Accessories', 'S4', 'Violet', '10', '50', '2024-05-20'),
+(25, 2, 'Disposable', 'Flava', 'Maze Pro', '10', '550', '2024-05-20'),
+(26, 2, 'Disposable', 'flava', 'new', '10', '550', '2024-05-20'),
+(27, 2, 'Disposable', 'Romio', '1', '10', '550', '2024-05-20'),
+(28, 2, 'Disposable', 'Blck', 'MM', '10', '550', '2024-05-20'),
+(29, 2, 'Juice', 'Tang', 'Orange', '10', '250', '2024-05-20'),
+(30, 2, 'Juice', 'Tang', 'Kalamansi', '10', '250', '2024-05-20'),
+(31, 2, 'Juice', 'Nestea', 'Lemon', '10', '250', '2024-05-20'),
+(32, 2, 'Juice', 'Nestea', 'Apple', '10', '250', '2024-05-20'),
+(33, 2, 'Device', 'new', 'd', '10', '2000', '2024-05-20'),
+(34, 2, 'Device', 'new', 'a', '10', '2000', '2024-05-20'),
+(35, 2, 'Device', 'new', 'b', '10', '2000', '2024-05-20'),
+(36, 2, 'Device', 'new', 'c', '10', '2000', '2024-05-20'),
+(37, 2, 'Accessories', 'rubber', 'a', '10', '50', '2024-05-20'),
+(38, 2, 'Accessories', 'rubber', 'b', '10', '50', '2024-05-20'),
+(39, 2, 'Accessories', 'rubber', 'c', '10', '50', '2024-05-20'),
+(40, 2, 'Accessories', 'rubber', 'd', '10', '50', '2024-05-20'),
+(41, 5, 'Disposable', 'Flava', 'Maze Pro', '10', '550', '2024-05-20'),
+(42, 5, 'Disposable', 'Flava', 'Apok', '10', '550', '2024-05-20'),
+(43, 5, 'Disposable', 'Boss', 'Nevoks', '10', '550', '2024-05-20'),
+(44, 5, 'Disposable', 'Romio', 'new', '10', '550', '2024-05-20'),
+(45, 5, 'Disposable', 'Shift', '1', '10', '550', '2024-05-20'),
+(46, 5, 'Juice', 'Tang', 'Mango', '10', '250', '2024-05-20'),
+(47, 5, 'Juice', 'Tang', 'Orange', '10', '250', '2024-05-20'),
+(48, 5, 'Juice', 'Tang', 'Grapes', '10', '250', '2024-05-20'),
+(49, 5, 'Juice', 'Tang', 'Kalamansi', '10', '250', '2024-05-20'),
+(50, 5, 'Juice', 'Nestea', 'Apple', '10', '250', '2024-05-20'),
+(51, 5, 'Device', 'Ex', 'a', '10', '2000', '2024-05-20'),
+(52, 5, 'Device', 'Ex', 'b', '10', '2000', '2024-05-20'),
+(53, 5, 'Device', 'Ex', 'c', '10', '2000', '2024-05-20'),
+(54, 5, 'Device', 'Ex', 'd', '10', '2000', '2024-05-20'),
+(55, 5, 'Device', 'Ex', 'e', '10', '2000', '2024-05-20'),
+(56, 5, 'Accessories', 'Sample', 'a', '10', '50', '2024-05-20'),
+(57, 5, 'Accessories', 'Sample', 'B', '10', '50', '2024-05-20'),
+(58, 5, 'Accessories', 'Sample', 'C', '10', '50', '2024-05-20'),
+(59, 5, 'Accessories', 'Sample', 'D', '10', '50', '2024-05-20'),
+(60, 5, 'Accessories', 'Sample', 'E', '10', '50', '2024-05-20'),
+(61, 6, 'Disposable', 'Shift', '1', '10', '550', '2024-05-20'),
+(62, 6, 'Disposable', 'Flava', 'Apok', '10', '550', '2024-05-20'),
+(63, 6, 'Disposable', 'Flava', 'Maze Pro', '10', '550', '2024-05-20'),
+(64, 6, 'Disposable', 'Boss', 'Nevoks', '10', '550', '2024-05-20'),
+(65, 6, 'Disposable', 'Romio', '1', '10', '550', '2024-05-20'),
+(66, 6, 'Juice', 'Tang', 'Orange', '10', '250', '2024-05-20'),
+(67, 6, 'Juice', 'Tang', 'Mango', '10', '250', '2024-05-20'),
+(68, 6, 'Juice', 'Tang', 'Grapes', '10', '250', '2024-05-20'),
+(69, 6, 'Juice', 'Nestea', 'Apple', '10', '250', '2024-05-20'),
+(70, 6, 'Juice', 'Nestea', 'Lemon', '10', '250', '2024-05-20'),
+(71, 6, 'Device', 'Ex', 'A', '10', '2000', '2024-05-20'),
+(72, 6, 'Device', 'Ex', 'B', '10', '2000', '2024-05-20'),
+(73, 6, 'Device', 'Ex', 'C', '10', '2000', '2024-05-20'),
+(74, 6, 'Device', 'Ex', 'D', '10', '2000', '2024-05-20'),
+(75, 6, 'Device', 'Ex', 'E', '10', '2000', '2024-05-20'),
+(76, 6, 'Accessories', 'Sample', 'A', '10', '50', '2024-05-20'),
+(77, 6, 'Accessories', 'Sample', 'B', '10', '50', '2024-05-20'),
+(78, 6, 'Accessories', 'Sample', 'C', '10', '50', '2024-05-20'),
+(79, 6, 'Accessories', 'Sam', 'D', '10', '50', '2024-05-20'),
+(80, 6, 'Accessories', 'Sample', 'E', '10', '50', '2024-05-20');
 
 --
 -- Indexes for dumped tables
@@ -262,25 +380,25 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

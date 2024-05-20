@@ -13,10 +13,10 @@ class Stock
         $this->conn = $conn;
     }
 
-    public function addStock($branch, $brand, $product, $stockQty, $price)
+    public function addStock($branch, $type, $brand, $product, $stockQty, $price)
     {
-        $stmt = $this->conn->prepare("INSERT INTO `stock` (`branchID`,`brand`, `product`, `stock`, `price`) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("issss", $branch, $brand, $product, $stockQty, $price);
+        $stmt = $this->conn->prepare("INSERT INTO `stock` (`branchID`, `category`, `brand`, `product`, `stock`, `price`) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("isssss", $branch, $type, $brand, $product, $stockQty, $price);
         if ($stmt->execute()) {
             $name = $brand . "-" . $product;
             $add = $this->conn->prepare("INSERT INTO `log`(`action`, `changes`) VALUES ('added',?)");
